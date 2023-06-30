@@ -1,24 +1,19 @@
 {
-  "name": "dev-template",
+  "name": "sygnal-com",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "homepage": "https://www.sygnal.com",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "serve",
-    "build": "esbuild ./src/* --bundle --sourcemap --minify --outdir=dist --watch",
+    "build": "esbuild ./src/*.ts --bundle --sourcemap --minify --outdir=dist --watch",
     "format": "prettier src/*.ts -w"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/learyjk/dev-template.git"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/learyjk/dev-template/issues"
-  },
-  "homepage": "https://github.com/learyjk/dev-template#readme",
+  "author": "Michael Wells",
   "devDependencies": {
     "esbuild": "^0.15.14",
     "prettier": "^2.7.1",
