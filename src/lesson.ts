@@ -2,9 +2,28 @@
 // ORIGIN 
 // https://codepen.io/memetican/pen/yLEvrpx/cc50a552fdadbde41e0a8eeba9e95101
 
-const init = () => {
+const init2 = () => {
 
 //    console.log('loaded')
+
+
+// window['sa5'] = window['sa5'] || {};
+// window['sa5'].hotkeys = (hotkeyHandler) => {
+//   hotkeyHandler.register("f3", () => {
+//     console.log("f3 pressed YAY!!!");
+//   });
+// }
+
+
+
+
+
+
+
+
+// CTRL key change CSS flag? 
+// if depressed for 250ms? 
+
 
     const daysRecent: number = 60; 
 
@@ -74,5 +93,5 @@ const init = () => {
 
 }
 
-document.addEventListener("DOMContentLoaded", init)
+document.addEventListener("DOMContentLoaded", init2)
 
