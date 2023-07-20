@@ -4,7 +4,7 @@
 
 const init = () => {
 
-    console.log('init main')
+    console.log('init main V21[] push')
 
 // Can install script if we want to
 // <!-- Sygnal Attributes 5 | Hotkeys -->
@@ -24,13 +24,36 @@ const init = () => {
 //ctrl+o open
 //ctrl+n new
 
-    window['sa5'] = window['sa5'] || {};
-    window['sa5'].hotkeys = (hotkeyHandler) => {
+
+// window.fsAttributes = window.fsAttributes || [];
+// window.fsAttributes.push([
+//   "toc",
+//   (tableInstances) => {
+//   }]);
+
+
+    window['sa5'] = window['sa5'] || [];
+
+    // Global hotkeys
+    window['sa5'].push(['hotkeys', 
+//    window['sa5'].hotkeys = 
+    (hotkeyHandler) => {
 
         // User home - F2
         hotkeyHandler.register("f2", () => {
             window.location.href = `/u/home`;
         });
+
+        // Search Page - CTRL+P
+        hotkeyHandler.register("ctrl+p", () => {
+            window.location.href = `/search`;
+        });
+
+    }]);
+
+    // Article hotkeys
+    window['sa5'].push(['hotkeys', 
+    (hotkeyHandler) => {
 
         // Edit - CTRL+SHIFT+E
         hotkeyHandler.register("ctrl+shift+e", () => {
@@ -47,11 +70,6 @@ const init = () => {
                 window.open(docsUrl, "_blank");
             }
 
-        });
-
-        // Search Page - CTRL+P
-        hotkeyHandler.register("ctrl+p", () => {
-            window.location.href = `/search`;
         });
 
         // Find - CTRL+F
@@ -89,7 +107,7 @@ const init = () => {
 //            window.location.href = `/search`;
         });
 
-    }
+    }]);
 
 }
 
