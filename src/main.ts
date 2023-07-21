@@ -2,9 +2,7 @@
 // ORIGIN 
 // https://codepen.io/memetican/pen/yLEvrpx/cc50a552fdadbde41e0a8eeba9e95101
 
-const init = () => {
-
-    console.log('init main V21[] push')
+const initGlobal = () => {
 
 // Can install script if we want to
 // <!-- Sygnal Attributes 5 | Hotkeys -->
@@ -13,31 +11,20 @@ const init = () => {
 // ></script> 
 
 
-// Some site-wide
-
-// Some page-specific
-// ctrl+f
-// esc
-// f1
-// f2
 
 //ctrl+o open
 //ctrl+n new
 
 
-// window.fsAttributes = window.fsAttributes || [];
-// window.fsAttributes.push([
-//   "toc",
-//   (tableInstances) => {
-//   }]);
-
-
-    window['sa5'] = window['sa5'] || [];
-
     // Global hotkeys
+    window['sa5'] = window['sa5'] || [];
     window['sa5'].push(['hotkeys', 
-//    window['sa5'].hotkeys = 
     (hotkeyHandler) => {
+
+        // Help - F1
+        hotkeyHandler.register("f1", () => {
+            window.location.href = `/about`;
+        });
 
         // User home - F2
         hotkeyHandler.register("f2", () => {
@@ -45,71 +32,72 @@ const init = () => {
         });
 
         // Search Page - CTRL+P
-        hotkeyHandler.register("ctrl+p", () => {
+        hotkeyHandler.register("ctrl+f, ctrl+p", () => {
             window.location.href = `/search`;
         });
 
-    }]);
-
-    // Article hotkeys
-    window['sa5'].push(['hotkeys', 
-    (hotkeyHandler) => {
-
-        // Edit - CTRL+SHIFT+E
-        hotkeyHandler.register("ctrl+shift+e", () => {
-            location.href = '?edit';
-        });
-
-        // Fallback Docs - CTRL+ALT+SHIFT+N
-        hotkeyHandler.register("ctrl+alt+shift+n", () => {
-
-            // TypeScript
-            let docsUrl: string | null = document.querySelector("meta[name='sygnal:docs:fallback']")?.getAttribute("content") || null;
-
-            if (docsUrl) {
-                window.open(docsUrl, "_blank");
-            }
-
-        });
-
-        // Find - CTRL+F
-        hotkeyHandler.register("shift+ctrl+f", () => {
-
-            // $('html').animate({scrollTop: 0}, 500);
-            // $("#menu-search").click(); 
-
-            // Smooth scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-
-            // Simulate click on menu-search
-            let menuSearch = document.getElementById("menu-search");
-            if (menuSearch) 
-                menuSearch.click();
-
-    //        window.location.href = `/search`;
-        });
-
-        // CTRL+ALT+N
-        hotkeyHandler.register("ctrl+alt+n", () => {
-            // JavaScript
-            var docsUrl = document.querySelector("meta[name='sygnal:docs']")?.getAttribute("content");
-
-        //        var docsUrl =
-        //    $("meta[name='sygnal:docs']").attr("content"); 
-        //       || $("meta[name='sygnal:docs:fallback']").attr("content"); 
-
-            console.log(`docsUrl = ${docsUrl}`); 
         
-            if (docsUrl)
-                window.open(docsUrl, "_blank");
-            else
-                alert("No Notes Doc defined.");           
-//            window.location.href = `/search`;
-        });
+//         // Find - CTRL+F
+//         hotkeyHandler.register("ctrl+f, shift+ctrl+f", () => {
+
+//             // $('html').animate({scrollTop: 0}, 500);
+//             // $("#menu-search").click(); 
+
+//             // Smooth scroll to top
+// //            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+
+// // let event = new Event('click', { bubbles: true, cancelable: true });
+// // let element = document.querySelector('#menu-search > .navigation-link.flex.tight > img') as Element;
+// // console.log("event", event);
+// // console.log("element", element); 
+// // element.dispatchEvent(event);
+// // element = document.querySelector('#menu-search > .navigation-link > img') as Element;
+// // element.dispatchEvent(event);
+// // element = document.querySelector('#menu-search img') as Element;
+// // element.dispatchEvent(event);
+// // element = document.querySelector('#menu-search') as Element;
+// // element.dispatchEvent(event);
+
+
+// // let event = new PointerEvent('pointerdown', {
+// //     bubbles: true,
+// //     cancelable: true,
+// //     pointerId: 1
+// // });
+// // let element = document.querySelector('#menu-search > .navigation-link.flex.tight > img') as Element;
+// // element.dispatchEvent(event);
+
+// // console.log("pointerDown");
+
+// //  element = document.querySelector('div#menu-search.dropdown.w-dropdown') as Element;
+// //  element.dispatchEvent(event);
+
+
+// // let event = new PointerEvent('click', { // 'pointerdown', {
+// //     bubbles: true,
+// //     cancelable: true,
+// //     pointerId: 1
+// // });
+// // let element = document.querySelector('#w-dropdown-toggle-3 div') as Element;
+// // element.dispatchEvent(event);
+
+// // console.log(element);
+// // console.log(event); 
+
+// //             // Simulate click on menu-search
+// //             let menuSearch = document.getElementById("menu-search");
+// //             if (menuSearch) {
+// //                 menuSearch.click();
+// // console.log("searching;");
+// //             }
+
+//     //        window.location.href = `/search`;
+//         });
 
     }]);
 
 }
 
-document.addEventListener("DOMContentLoaded", init)
+document.addEventListener("DOMContentLoaded", initGlobal)
 
