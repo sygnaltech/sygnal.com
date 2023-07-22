@@ -14,7 +14,7 @@ const initGlobal = () => {
 
 //ctrl+o open
 //ctrl+n new
-
+ 
 
     // Global hotkeys
     window['sa5'] = window['sa5'] || [];
@@ -31,69 +31,80 @@ const initGlobal = () => {
             window.location.href = `/u/home`;
         });
 
-        // Search Page - CTRL+P
-        hotkeyHandler.register("ctrl+f, ctrl+p", () => {
+        // Search Page - CTRL+P ctrl+f, 
+        hotkeyHandler.register("ctrl+p", () => {
             window.location.href = `/search`;
         });
 
         
-//         // Find - CTRL+F
-//         hotkeyHandler.register("ctrl+f, shift+ctrl+f", () => {
+        // Find - CTRL+F
+        hotkeyHandler.register("ctrl+f, shift+ctrl+f", () => {
 
-//             // $('html').animate({scrollTop: 0}, 500);
-//             // $("#menu-search").click(); 
+// console.log("ctrl+f a pressed"); 
 
-//             // Smooth scroll to top
-// //            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // $('html').animate({scrollTop: 0}, 500);
+            // $("#menu-search").click(); 
 
+            // Smooth scroll to top
+//            window.scrollTo({ top: 0, behavior: 'smooth' });
 
-// // let event = new Event('click', { bubbles: true, cancelable: true });
-// // let element = document.querySelector('#menu-search > .navigation-link.flex.tight > img') as Element;
-// // console.log("event", event);
-// // console.log("element", element); 
-// // element.dispatchEvent(event);
-// // element = document.querySelector('#menu-search > .navigation-link > img') as Element;
-// // element.dispatchEvent(event);
-// // element = document.querySelector('#menu-search img') as Element;
-// // element.dispatchEvent(event);
-// // element = document.querySelector('#menu-search') as Element;
-// // element.dispatchEvent(event);
+// Toggle the dropdown
+const dropdownToggle = document.querySelector('#menu-search .w-dropdown-toggle') as HTMLElement; 
+dropdownToggle.dispatchEvent(new Event('mousedown'));
+dropdownToggle.dispatchEvent(new Event('mouseup'));
 
+// Give input to the search input
+const search = document.querySelector("#search-input") as HTMLElement;
+search.focus();
+search.click();
 
-// // let event = new PointerEvent('pointerdown', {
-// //     bubbles: true,
-// //     cancelable: true,
-// //     pointerId: 1
-// // });
-// // let element = document.querySelector('#menu-search > .navigation-link.flex.tight > img') as Element;
-// // element.dispatchEvent(event);
-
-// // console.log("pointerDown");
-
-// //  element = document.querySelector('div#menu-search.dropdown.w-dropdown') as Element;
-// //  element.dispatchEvent(event);
+// let event = new Event('click', { bubbles: true, cancelable: true });
+// let element = document.querySelector('#menu-search > .navigation-link.flex.tight > img') as Element;
+// console.log("event", event);
+// console.log("element", element); 
+// element.dispatchEvent(event);
+// element = document.querySelector('#menu-search > .navigation-link > img') as Element;
+// element.dispatchEvent(event);
+// element = document.querySelector('#menu-search img') as Element;
+// element.dispatchEvent(event);
+// element = document.querySelector('#menu-search') as Element;
+// element.dispatchEvent(event);
 
 
-// // let event = new PointerEvent('click', { // 'pointerdown', {
-// //     bubbles: true,
-// //     cancelable: true,
-// //     pointerId: 1
-// // });
-// // let element = document.querySelector('#w-dropdown-toggle-3 div') as Element;
-// // element.dispatchEvent(event);
+// let event = new PointerEvent('pointerdown', {
+//     bubbles: true,
+//     cancelable: true,
+//     pointerId: 1
+// });
+// let element = document.querySelector('#menu-search > .navigation-link.flex.tight > img') as Element;
+// element.dispatchEvent(event);
 
-// // console.log(element);
-// // console.log(event); 
+// console.log("pointerDown");
 
-// //             // Simulate click on menu-search
-// //             let menuSearch = document.getElementById("menu-search");
-// //             if (menuSearch) {
-// //                 menuSearch.click();
-// // console.log("searching;");
-// //             }
+//  element = document.querySelector('div#menu-search.dropdown.w-dropdown') as Element;
+//  element.dispatchEvent(event);
 
-//     //        window.location.href = `/search`;
-//         });
+
+// let event = new PointerEvent('click', { // 'pointerdown', {
+//     bubbles: true,
+//     cancelable: true,
+//     pointerId: 1
+// });
+// let element = document.querySelector('#w-dropdown-toggle-3 div') as Element;
+// element.dispatchEvent(event);
+
+// console.log(element);
+// console.log(event); 
+
+//             // Simulate click on menu-search
+//             let menuSearch = document.getElementById("menu-search");
+//             if (menuSearch) {
+//                 menuSearch.click();
+// console.log("searching;");
+//             }
+
+    //        window.location.href = `/search`;
+        });
 
     }]);
 
