@@ -4,6 +4,8 @@
 
 const initGlobal = () => {
 
+    console.log("1.2.1");
+
 // Can install script if we want to
 // <!-- Sygnal Attributes 5 | Hotkeys -->
 // <script defer
@@ -36,7 +38,75 @@ const initGlobal = () => {
             window.location.href = `/search`;
         });
 
+        // Search Page - CTRL+SHIFT+3 
+        hotkeyHandler.register("ctrl+alt+shift+m", () => {
+            console.log("test");
+
+            const docsUrl = `https://www.mindomo.com/mindmap/15e2b12a299a4a929225effc1292a1dd`;
+
+            if (docsUrl)
+                window.open(docsUrl, "_blank");
+            // else
+            //     alert("No Notes Doc defined.");    
+
+        });
+
+        // Fallback Docs - CTRL+ALT+SHIFT+N
+        hotkeyHandler.register("ctrl+alt+m", () => { // ,  ctrl+shift+2 
+
+            // TypeScript
+            let docsUrl: string | null = document.querySelector("meta[name='page:notes:mindmap']")?.getAttribute("content") || null;
+
+            console.log("ctrl+alt+m"); 
+
+            if (docsUrl) {
+                window.open(docsUrl, "_blank");
+            }
+
+        });
+
+        // CTRL+ALT+N
+        hotkeyHandler.register("ctrl+alt+f", () => { // , ctrl+shift+1
+            
+            console.log("ctrl+alt+f"); 
+
+            // JavaScript
+            var docsUrl = document.querySelector("meta[name='page:notes:folder']")?.getAttribute("content");
+
+        //        var docsUrl =
+        //    $("meta[name='sygnal:docs']").attr("content"); 
+        //       || $("meta[name='sygnal:docs:fallback']").attr("content"); 
+
+            console.log(`docsUrl = ${docsUrl}`); 
         
+            if (docsUrl)
+                window.open(docsUrl, "_blank");
+            // else
+            //     alert("No Notes Doc defined.");           
+//            window.location.href = `/search`;
+        }); 
+
+        // CTRL+ALT+N
+        hotkeyHandler.register("ctrl+alt+n", () => { // , ctrl+shift+1
+            
+            console.log("ctrl+alt+n"); 
+
+            // JavaScript
+            var docsUrl = document.querySelector("meta[name='page:notes:mindmap']")?.getAttribute("content");
+
+        //        var docsUrl =
+        //    $("meta[name='sygnal:docs']").attr("content"); 
+        //       || $("meta[name='sygnal:docs:fallback']").attr("content"); 
+
+            console.log(`docsUrl = ${docsUrl}`); 
+        
+            if (docsUrl)
+                window.open(docsUrl, "_blank");
+            // else
+            //     alert("No Notes Doc defined.");           
+//            window.location.href = `/search`;
+        }); 
+
         // Find - CTRL+F
         hotkeyHandler.register("ctrl+f, shift+ctrl+f", () => {
 

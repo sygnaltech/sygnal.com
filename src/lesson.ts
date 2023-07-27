@@ -15,35 +15,61 @@ const initLesson = () => {
             location.href = '?edit';
         });
 
-        // Fallback Docs - CTRL+ALT+SHIFT+N
-        hotkeyHandler.register("ctrl+alt+shift+n", () => {
+//         // Fallback Docs - CTRL+ALT+SHIFT+N
+//         hotkeyHandler.register("ctrl+alt+m", () => { // ,  ctrl+shift+2 
 
-            // TypeScript
-            let docsUrl: string | null = document.querySelector("meta[name='sygnal:docs:fallback']")?.getAttribute("content") || null;
+//             // TypeScript
+//             let docsUrl: string | null = document.querySelector("meta[name='page:notes:mindmap']")?.getAttribute("content") || null;
 
-            if (docsUrl) {
-                window.open(docsUrl, "_blank");
-            }
+//             console.log("ctrl+alt+m"); 
 
-        });
+//             if (docsUrl) {
+//                 window.open(docsUrl, "_blank");
+//             }
 
-        // CTRL+ALT+N
-        hotkeyHandler.register("ctrl+alt+n", () => {
-            // JavaScript
-            var docsUrl = document.querySelector("meta[name='sygnal:docs']")?.getAttribute("content");
+//         });
 
-        //        var docsUrl =
-        //    $("meta[name='sygnal:docs']").attr("content"); 
-        //       || $("meta[name='sygnal:docs:fallback']").attr("content"); 
+//         // CTRL+ALT+N
+//         hotkeyHandler.register("ctrl+alt+f", () => { // , ctrl+shift+1
+            
+//             console.log("ctrl+alt+f"); 
 
-            console.log(`docsUrl = ${docsUrl}`); 
+//             // JavaScript
+//             var docsUrl = document.querySelector("meta[name='page:notes:folder']")?.getAttribute("content");
+
+//         //        var docsUrl =
+//         //    $("meta[name='sygnal:docs']").attr("content"); 
+//         //       || $("meta[name='sygnal:docs:fallback']").attr("content"); 
+
+//             console.log(`docsUrl = ${docsUrl}`); 
         
-            if (docsUrl)
-                window.open(docsUrl, "_blank");
-            else
-                alert("No Notes Doc defined.");           
-//            window.location.href = `/search`;
-        });
+//             if (docsUrl)
+//                 window.open(docsUrl, "_blank");
+//             else
+//                 alert("No Notes Doc defined.");           
+// //            window.location.href = `/search`;
+//         }); 
+
+//         // CTRL+ALT+N
+//         hotkeyHandler.register("ctrl+alt+n", () => { // , ctrl+shift+1
+            
+//             console.log("ctrl+alt+n"); 
+
+//             // JavaScript
+//             var docsUrl = document.querySelector("meta[name='page:notes:mindmap']")?.getAttribute("content");
+
+//         //        var docsUrl =
+//         //    $("meta[name='sygnal:docs']").attr("content"); 
+//         //       || $("meta[name='sygnal:docs:fallback']").attr("content"); 
+
+//             console.log(`docsUrl = ${docsUrl}`); 
+        
+//             if (docsUrl)
+//                 window.open(docsUrl, "_blank");
+//             else
+//                 alert("No Notes Doc defined.");           
+// //            window.location.href = `/search`;
+//         });
 
     }]);
 
