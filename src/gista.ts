@@ -55,7 +55,7 @@ export async function initGistaAsync() {
                     // console.log(`Attribute ${mutation.attributeName} was modified.`);
                     if (mutation.target instanceof HTMLElement) {
 
-                        console.log(mutation.target); 
+//                        console.log(mutation.target); 
 
                         // Ignore X
                         if (mutation.target.tagName == "DIV" && mutation.target.innerText == '✕') {
