@@ -2,9 +2,13 @@
 // ORIGIN 
 // https://codepen.io/memetican/pen/yLEvrpx/cc50a552fdadbde41e0a8eeba9e95101
 
+import { initGistaAsync } from "./gista";
+
+
+
 const initGlobal = () => {
 
-    console.log("1.2.1");
+    console.log("1.2.2");
 
 // Can install script if we want to
 // <!-- Sygnal Attributes 5 | Hotkeys -->
@@ -12,7 +16,7 @@ const initGlobal = () => {
 // src="https://cdn.jsdelivr.net/gh/sygnaltech/webflow-util@5.2/dist/nocode/webflow-hotkeys.min.js"
 // ></script> 
 
-
+    initGistaAsync();
 
 //ctrl+o open
 //ctrl+n new
