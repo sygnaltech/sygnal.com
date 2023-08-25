@@ -16,7 +16,7 @@ const initGlobal = () => {
 // src="https://cdn.jsdelivr.net/gh/sygnaltech/webflow-util@5.2/dist/nocode/webflow-hotkeys.min.js"
 // ></script> 
 
-    initGistaAsync();
+//    initGistaAsync();
 
 //ctrl+o open
 //ctrl+n new
