@@ -1,2 +1,30 @@
-(()=>{var l=()=>{var o=document.getElementById("input"),n=document.getElementById("output"),a=document.getElementById("convert-button"),u=document.getElementById("copy-button");a.addEventListener("click",r);function d(){var t=o.value,e=t.replace(/</g,"&lt;");e=`<pre><code>${e}</code></pre>`,n.value=e}function r(){var t=o.value,e=t.replace(/&/g,"&amp;").replace(/</g,"&lt;");e=`<pre><code>${e}</code></pre>`,n.value=e}u.addEventListener("click",c);function c(){var t=n.value;navigator.clipboard.writeText(t)}};document.addEventListener("DOMContentLoaded",l);})();
+"use strict";
+(() => {
+  // src/tools/code-formatter.ts
+  var init_code_formatter = () => {
+    var inputElem = document.getElementById("input");
+    var outputElem = document.getElementById("output");
+    var convertButtonElem = document.getElementById("convert-button");
+    var copyButtonElem = document.getElementById("copy-button");
+    convertButtonElem.addEventListener("click", convert);
+    function convert2() {
+      var input = inputElem.value;
+      var output = input.replace(/</g, "&lt;");
+      output = `<pre><code>${output}</code></pre>`;
+      outputElem.value = output;
+    }
+    function convert() {
+      var input = inputElem.value;
+      var output = input.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+      output = `<pre><code>${output}</code></pre>`;
+      outputElem.value = output;
+    }
+    copyButtonElem.addEventListener("click", copyToClipboard);
+    function copyToClipboard() {
+      var output = outputElem.value;
+      navigator.clipboard.writeText(output);
+    }
+  };
+  document.addEventListener("DOMContentLoaded", init_code_formatter);
+})();
 //# sourceMappingURL=code-formatter.js.map

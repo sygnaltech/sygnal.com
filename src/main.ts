@@ -8,7 +8,7 @@ import { initGistaAsync } from "./gista";
 
 const initGlobal = () => {
 
-    console.log("1.2.2");
+//    console.log("1.2.2");
 
 // Can install script if we want to
 // <!-- Sygnal Attributes 5 | Hotkeys -->
@@ -184,5 +184,5 @@ search.click();
 
 }
 
-document.addEventListener("DOMContentLoaded", initGlobal)
+// document.addEventListener("DOMContentLoaded", initGlobal)
 
