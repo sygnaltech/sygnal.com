@@ -1,31 +1,36 @@
 
-// ORIGIN 
-// https://codepen.io/memetican/pen/yLEvrpx/cc50a552fdadbde41e0a8eeba9e95101
-
-import { initGistaAsync } from "./gista";
 
 
 
-const initGlobal = () => {
 
-//    console.log("1.2.2");
+/*
+ * Site
+ */
 
-// Can install script if we want to
-// <!-- Sygnal Attributes 5 | Hotkeys -->
-// <script defer
-// src="https://cdn.jsdelivr.net/gh/sygnaltech/webflow-util@5.2/dist/nocode/webflow-hotkeys.min.js"
-// ></script> 
+import { IModule, Page } from "@sygnal/sse";
 
-//    initGistaAsync();
-
-//ctrl+o open
-//ctrl+n new
+// import gsap from 'gsap'; 
  
 
+export class Hotkeys implements IModule {
+
+  constructor() {
+  }
+
+  /**
+   * Setup code runs synchronously, inline, at the end of the </head>. 
+   * It's used for special init tasks that must be performed early, and which do not require
+   * the DOM to be loaded. 
+   */
+  setup() {
+
+  }
+
+  exec() { 
+
     // Global hotkeys
-    window['sa5'] = window['sa5'] || [];
     window['sa5'].push(['hotkeys', 
-    (hotkeyHandler) => {
+    (hotkeyHandler: any) => {
 
         // Help - F1
         hotkeyHandler.register("f1", () => {
@@ -122,15 +127,15 @@ const initGlobal = () => {
             // Smooth scroll to top
 //            window.scrollTo({ top: 0, behavior: 'smooth' });
 
-// Toggle the dropdown
-const dropdownToggle = document.querySelector('#menu-search .w-dropdown-toggle') as HTMLElement; 
-dropdownToggle.dispatchEvent(new Event('mousedown'));
-dropdownToggle.dispatchEvent(new Event('mouseup'));
+            // Toggle the dropdown
+            const dropdownToggle = document.querySelector('#menu-search .w-dropdown-toggle') as HTMLElement; 
+            dropdownToggle.dispatchEvent(new Event('mousedown'));
+            dropdownToggle.dispatchEvent(new Event('mouseup'));
 
-// Give input to the search input
-const search = document.querySelector("#search-input") as HTMLElement;
-search.focus();
-search.click();
+            // Give input to the search input
+            const search = document.querySelector("#search-input") as HTMLElement;
+            search.focus();
+            search.click();
 
 // let event = new Event('click', { bubbles: true, cancelable: true });
 // let element = document.querySelector('#menu-search > .navigation-link.flex.tight > img') as Element;
@@ -180,9 +185,9 @@ search.click();
     //        window.location.href = `/search`;
         });
 
-    }]);
+    }]); 
+
+  }
 
 }
-
-// document.addEventListener("DOMContentLoaded", initGlobal)
 

@@ -1,7 +1,7 @@
 "use strict";
 (() => {
   // src/version.ts
-  var VERSION = "2.0.1";
+  var VERSION = "2.0.2";
 
   // node_modules/@sygnal/sse/dist/script.js
   var ScriptElement = class extends HTMLScriptElement {
@@ -4295,9 +4295,72 @@
     null != L && L.addEventListener && ("complete" === L.readyState ? e5() : L.addEventListener("DOMContentLoaded", e5, false)), C && oe(C, "load", e5, true);
   }(), os);
 
+  // src/features/hotkeys.ts
+  var Hotkeys = class {
+    constructor() {
+    }
+    setup() {
+    }
+    exec() {
+      window["sa5"].push([
+        "hotkeys",
+        (hotkeyHandler) => {
+          hotkeyHandler.register("f1", () => {
+            window.location.href = `/about`;
+          });
+          hotkeyHandler.register("f2", () => {
+            window.location.href = `/u/home`;
+          });
+          hotkeyHandler.register("ctrl+p", () => {
+            window.location.href = `/search`;
+          });
+          hotkeyHandler.register("ctrl+alt+shift+m", () => {
+            console.log("test");
+            const docsUrl = `https://www.mindomo.com/mindmap/15e2b12a299a4a929225effc1292a1dd`;
+            if (docsUrl)
+              window.open(docsUrl, "_blank");
+          });
+          hotkeyHandler.register("ctrl+alt+m", () => {
+            var _a;
+            let docsUrl = ((_a = document.querySelector("meta[name='page:notes:mindmap']")) == null ? void 0 : _a.getAttribute("content")) || null;
+            console.log("ctrl+alt+m");
+            if (docsUrl) {
+              window.open(docsUrl, "_blank");
+            }
+          });
+          hotkeyHandler.register("ctrl+alt+f", () => {
+            var _a;
+            console.log("ctrl+alt+f");
+            var docsUrl = (_a = document.querySelector("meta[name='page:notes:folder']")) == null ? void 0 : _a.getAttribute("content");
+            console.log(`docsUrl = ${docsUrl}`);
+            if (docsUrl)
+              window.open(docsUrl, "_blank");
+          });
+          hotkeyHandler.register("ctrl+alt+n", () => {
+            var _a;
+            console.log("ctrl+alt+n");
+            var docsUrl = (_a = document.querySelector("meta[name='page:notes:mindmap']")) == null ? void 0 : _a.getAttribute("content");
+            console.log(`docsUrl = ${docsUrl}`);
+            if (docsUrl)
+              window.open(docsUrl, "_blank");
+          });
+          hotkeyHandler.register("ctrl+f, shift+ctrl+f", () => {
+            const dropdownToggle = document.querySelector("#menu-search .w-dropdown-toggle");
+            dropdownToggle.dispatchEvent(new Event("mousedown"));
+            dropdownToggle.dispatchEvent(new Event("mouseup"));
+            const search = document.querySelector("#search-input");
+            search.focus();
+            search.click();
+          });
+        }
+      ]);
+    }
+  };
+
   // src/site.ts
   var Site = class {
     constructor() {
+      this.featureHotkeys = new Hotkeys();
     }
     setup() {
       Page.loadEngineCSS("site.css");
@@ -4308,8 +4371,10 @@
           person_profiles: "identified_only"
         }
       );
+      this.featureHotkeys.setup();
     }
     exec() {
+      this.featureHotkeys.exec();
       as.onFeatureFlags(function() {
         if (as.isFeatureEnabled("alerts")) {
           const alertElements = document.querySelectorAll('[sse-component="alerts"]');
@@ -4335,8 +4400,27 @@
     return routeDispatcher2;
   };
 
+  // src/engine/component-manager.ts
+  var ComponentManager = class {
+    constructor() {
+      this.components = /* @__PURE__ */ new Map();
+    }
+    registerComponent(type, component) {
+      var _a;
+      if (!this.components.has(type)) {
+        this.components.set(type, []);
+      }
+      (_a = this.components.get(type)) == null ? void 0 : _a.push(component);
+    }
+    getComponentsByType(type) {
+      return this.components.get(type) || [];
+    }
+  };
+
   // src/index.ts
   var SITE_NAME = "Site";
+  window.sa5 = window.sa5 || [];
+  window.componentManager = new ComponentManager();
   initSSE();
   var setup = () => {
     console.log(`${SITE_NAME} package init v${VERSION}`);

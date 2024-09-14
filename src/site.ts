@@ -5,13 +5,19 @@
 
 import { IModule, Page } from "@sygnal/sse";
 import posthog from 'posthog-js'
+import { Hotkeys } from "./features/hotkeys";
 
 // import gsap from 'gsap'; 
  
 
 export class Site implements IModule {
 
+  featureHotkeys: Hotkeys;
+
   constructor() {
+
+    this.featureHotkeys = new Hotkeys();
+
   }
 
   /**
@@ -32,9 +38,14 @@ export class Site implements IModule {
         }
     )
 
+    this.featureHotkeys.setup(); 
+
   }
 
   exec() {
+
+    this.featureHotkeys.exec(); 
+
 
     // Put your site-level custom code here
     // it will have full access to the DOM 
