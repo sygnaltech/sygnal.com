@@ -13,6 +13,7 @@
 import { VERSION } from "./version";
 import { routeDispatcher } from "./routes";
 import { initSSE } from "@sygnal/sse"; 
+import { ComponentManager } from "./engine/component-manager";
 
 interface SiteGlobalDataType {
     // Define properties and their types for SiteDataType
@@ -40,8 +41,23 @@ declare global {
         // Site global data
         Site: SiteGlobalDataType;
 
+        Webflow: {
+            require: (module: string) => {
+                destroy: () => void; 
+                init: () => void;
+            };
+          };
+
+        sa5: any;
+//        sa5: Array<[string, (accordion: any, index: number) => void]>;
+
+        componentManager: ComponentManager;
+
     }
 }
+
+window.sa5 = window.sa5 || [];
+window.componentManager = new ComponentManager();
 
 // Init SSE Engine
 initSSE();
