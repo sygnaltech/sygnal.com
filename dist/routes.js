@@ -4346,6 +4346,31 @@
     }
   };
 
+  // src/features/footnotes.ts
+  var Footnotes = class {
+    constructor() {
+    }
+    setup() {
+    }
+    exec() {
+      console.log("F");
+      let footnoteCounter = 1;
+      const footnoteContainers = document.querySelectorAll("[syg-footnotes]");
+      footnoteContainers.forEach((container) => {
+        const links = container.querySelectorAll("a");
+        links.forEach((link) => {
+          var _a;
+          if ((_a = link.textContent) == null ? void 0 : _a.trim().startsWith("#")) {
+            link.classList.add("syg-footnote");
+            link.textContent = footnoteCounter.toString();
+            link.setAttribute("target", "_blank");
+            footnoteCounter++;
+          }
+        });
+      });
+    }
+  };
+
   // src/site.ts
   var Site = class {
     constructor() {
@@ -4364,6 +4389,7 @@
     }
     exec() {
       this.featureHotkeys.exec();
+      new Footnotes().exec();
       as.onFeatureFlags(function() {
         if (as.isFeatureEnabled("alerts")) {
           const alertElements = document.querySelectorAll('[sse-component="alerts"]');
@@ -4390,14 +4416,11 @@
     }
     exec() {
       const form = document.getElementById("email-form");
-      console.log("form found");
       if (form) {
         form.addEventListener("submit", (event) => {
           const emailInput = form.querySelector('[data-name="Email"]');
-          console.log("submission occurred", emailInput);
           if (emailInput) {
             const email = emailInput.value;
-            console.log("Logging email:", email);
             as.identify(email);
           }
         });
@@ -4405,11 +4428,23 @@
     }
   };
 
+  // src/page/lessons.ts
+  var LessonsPage = class {
+    constructor() {
+    }
+    setup() {
+    }
+    exec() {
+      console.log("LESSONS page.");
+    }
+  };
+
   // src/routes.ts
   var routeDispatcher = () => {
     var routeDispatcher2 = new RouteDispatcher(Site);
     routeDispatcher2.routes = {
-      "/services/*": ServicesPage
+      "/services/*": ServicesPage,
+      "/lessons/*": LessonsPage
     };
     return routeDispatcher2;
   };

@@ -4304,6 +4304,31 @@
     }
   };
 
+  // src/features/footnotes.ts
+  var Footnotes = class {
+    constructor() {
+    }
+    setup() {
+    }
+    exec() {
+      console.log("F");
+      let footnoteCounter = 1;
+      const footnoteContainers = document.querySelectorAll("[syg-footnotes]");
+      footnoteContainers.forEach((container) => {
+        const links = container.querySelectorAll("a");
+        links.forEach((link) => {
+          var _a;
+          if ((_a = link.textContent) == null ? void 0 : _a.trim().startsWith("#")) {
+            link.classList.add("syg-footnote");
+            link.textContent = footnoteCounter.toString();
+            link.setAttribute("target", "_blank");
+            footnoteCounter++;
+          }
+        });
+      });
+    }
+  };
+
   // src/site.ts
   var Site = class {
     constructor() {
@@ -4322,6 +4347,7 @@
     }
     exec() {
       this.featureHotkeys.exec();
+      new Footnotes().exec();
       as.onFeatureFlags(function() {
         if (as.isFeatureEnabled("alerts")) {
           const alertElements = document.querySelectorAll('[sse-component="alerts"]');
