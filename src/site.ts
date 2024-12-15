@@ -6,6 +6,7 @@
 import { IModule, Page } from "@sygnal/sse";
 import posthog from 'posthog-js'
 import { Hotkeys } from "./features/hotkeys";
+import { Footnotes } from "./features/footnotes";
 
 // import gsap from 'gsap'; 
  
@@ -45,7 +46,8 @@ export class Site implements IModule {
   exec() {
 
     this.featureHotkeys.exec(); 
-
+    
+    (new Footnotes).exec();
 
     // Put your site-level custom code here
     // it will have full access to the DOM 

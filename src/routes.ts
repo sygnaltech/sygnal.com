@@ -14,6 +14,7 @@
 import { RouteDispatcher } from "@sygnal/sse";
 import { Site } from "./site";
 import { ServicesPage } from "./page/services";
+import { LessonsPage } from "./page/lessons";
 
 export const routeDispatcher = (): RouteDispatcher => {
     
@@ -23,6 +24,7 @@ export const routeDispatcher = (): RouteDispatcher => {
         // Site pages
 //        '/': HomePage,
         '/services/*': ServicesPage, 
+        '/lessons/*': LessonsPage, 
         
         // TEST Pages
 

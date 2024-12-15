@@ -3955,14 +3955,11 @@
     }
     exec() {
       const form = document.getElementById("email-form");
-      console.log("form found");
       if (form) {
         form.addEventListener("submit", (event) => {
           const emailInput = form.querySelector('[data-name="Email"]');
-          console.log("submission occurred", emailInput);
           if (emailInput) {
             const email = emailInput.value;
-            console.log("Logging email:", email);
             as.identify(email);
           }
         });
